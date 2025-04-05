@@ -310,4 +310,16 @@ print(y.values) # dict_values(['Ahmet', 'Kaya', 42])
 a = {'Elma', 'Armut', 'Kiraz'}
 print(type(a)) # <class 'set'>
 print(a) # {'Elma', 'Armut', 'Kiraz'}
-print(a[0]) # TypeError: 'set' object is not subscriptable (set'ler sırasızdır, index ile erişemezsin)
+# print(a[0]) # TypeError: 'set' object is not subscriptable (set'ler sırasızdır, index ile erişemezsin)
+
+liste =  [1, 2, 3, 3, 4, 4, 1, 5, 2]
+temiz_liste = set(liste) # set() ile tekrar eden elemanları temizler
+print(liste) # [1, 2, 3, 3, 4, 4, 1, 5, 2]
+print(temiz_liste) # {1, 2, 3, 4, 5}
+print(type(liste)) # <class 'list'>
+print(type(temiz_liste)) # <class 'set'>
+
+liste_2 = list(temiz_liste) # tekrar listeye dönüştürmek için list() kullanılır
+print(liste_2) # [1, 2, 3, 4, 5]
+print(type(liste_2)) # <class 'list'>
+
