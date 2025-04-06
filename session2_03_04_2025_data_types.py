@@ -197,6 +197,8 @@ print('Hello', 'World', sep = ' * ') # Hello * World
 
 # str()
 
+# String Türkçesi Karakter dizisi veya metin.
+
 sayi = 365
 str_sayi = str(sayi) # '365' # int to str
 print(sayi, end = ' * * * ')
@@ -263,7 +265,7 @@ print(int(False)) # 0 # bool to int (False'un karşılığı 0'dır)
 # print(int(2j)) TypeError: int() argument must be a string, a bytes-like object or a real number, not 'complex', önemli
 
 x, y, z = 'python', 3.14, 9
-print(x, y, z, sep = '\n') # python 3.14 9
+print(x, y, z) # python 3.14 9
 print("x : ", x, "y : ",y,"z : ",z)
 
 # float()
@@ -322,4 +324,10 @@ print(type(temiz_liste)) # <class 'set'>
 liste_2 = list(temiz_liste) # tekrar listeye dönüştürmek için list() kullanılır
 print(liste_2) # [1, 2, 3, 4, 5]
 print(type(liste_2)) # <class 'list'>
+
+# Yarıçapı 7 olan bir dairenin alanını bulan python kodunu yazınız.
+pi = 3.14
+r = 7
+dairenin_alanı = pi * r ** 2
+print(dairenin_alanı)  # 153.86
 
