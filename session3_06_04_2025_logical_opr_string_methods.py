@@ -149,3 +149,91 @@ print("python öğrenmek çok eğlenceli".title()) # Python Öğrenmek Çok Eğl
 
 print("pytHON".swapcase()) # PYThon
 
+
+
+# Indexing and Slicing
+# Karakterlere erişim sağlar.
+
+
+"""
+Veri Yapısı	         İndeksleme	       Dilimleme	       Not
+str	                   E                  E                 -
+list	               E                  E                 -
+tuple	               E                  E                 Değiştirilemez
+range	               E                  H                 Genelde list() ile
+set	                   H                  H                 Sırasız
+dict	               H                  H                 Sırasız ve anahtar-değer çiftleri ile erişilir.
+numpy.array            E                  E                 Numpy dizileri için geçerli.
+"""
+
+name = "Techpro Education"
+print(f"Hello my name is {name}.")
+print(name[0])
+print(name[8])
+print(name[7])
+print(name[16])
+print(name[-1]) # Son karaktere erişim sağlar.
+print(name[-5])
+
+print("Techpro" + " " + "Education") # + operatörü string ifadelerle kullanılınca uç uca ekleme yani concat yapar
+
+print("Techpro" * 3) # * operatörü string ifadeleri verilen sayı kadar uç uca ekler
+
+print(name[4] + name[5] + name[6])
+
+print(name[2] + name[-5] + name[-1])
+
+print(name[4:7]) # değişken[start : stop] start dahildir stop indexi dahil değildir
+
+print(name[:4]) # 0'dan 4'e kadar olan karakterleri alır. 0 dahil 4 hariç.
+
+print(name[ : ]) # Tüm karakterleri alır.
+
+print(name[-2 : -5]) #Python her zaman soldan sağa çalışır. Python sola doğru gitmez, 
+
+print(name[-2:2]) # boş string döndürdü
+
+print(name[-2:-5:-1]) # oit Eğer tersine gitmek istiyorsak step parametresi eklemek gerekir. -1 ile sağdan sola gidilir.
+
+print(name[ : : -1]) # Tüm karakterleri ters çevirir.
+# değişken[start : stop : step] step negatif girilirse tersten okur
+
+"""step parametresi, Python’da slicing (dilimleme) işlemlerinde kaç adımda ilerleyeceğini belirler. 
+Yani start ile stop arasında kaç adım atlayarak ilerleyeceğini söyler.
+değişken[start : stop : step]
+step için varsayılan değer 1’dir.
+"""
+
+print(name[-2::-5]) # ourT -2'den başlar, 5'er 5'er atlayarak indeksleri getirir
+
+# name = Techpro Education
+print(name[3:-4:2]) # hr dc 3'ten başlar, -5'e kadar 2'şer atlayarak indeksleri getirir. 3, 5, 7, 9, 11 bitiş indeksi dahil edilmez -4 (13) dahil değil ÖNEMLİ ******
+
+name_1 = name[3:7]
+print(name_1) # hpro
+
+print("Gülay"[:3])
+
+
+
+
+# len() metodu, string ifadedeki eleman sayısını verir. indeks sayısından bir fazladır, 0'dan başlamaz.
+
+print(len(name)) # 17 karakter var. boşluklar da sayılır.
+
+print(len("Gülay")) # 5
+
+
+
+
+# replace() metodu,verilen alt dizeyi yeni ifade ile değiştirir.
+
+print(name.replace(" ","&")) # Techpro&Education
+print(name) # Techpro Education
+# Python stringleri immutable (değiştirilemez) olduğu için replace() yeni bir string döner, orijinali değiştirmez.
+
+name_2 = "Dersimiz bitiyor."
+print(name_2) # Dersimiz bitiyor.
+print(name_2.replace("i","$")) # Ders$m$z b$t$yor.
+
+
