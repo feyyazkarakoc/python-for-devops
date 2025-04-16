@@ -29,7 +29,7 @@ print(1 is True) # False # is operatörü nesne kimliğini (yani bellekteki yeri
 print(1 == True) # True # == operatörü değerleri karşılaştırır. 1 ve True (1) değer olarak eşittirler.
 print(1 != False) # True # != operatörü değerleri karşılaştırır. 1 ve False (0) eşit değerde değildirler.
 
-print(0 is not False) # True
+print(0 is not False) # True is not operatörü nesne kimliğini (yani bellekteki yerini) karşılaştırır. 0 ve False eşit değerde olabilir ama aynı nesne değildirler.
 
 print(2 and 3 ) # 3 # Hepsi True olduğunda en sonuncuyu döndürür.
 print(0 and 1000) # 0 # Gördüğü ilk False değeri yazdırır.
@@ -57,7 +57,7 @@ print(True or False and not 0 and 8 or False) # True # işlem önceliği: not > 
 print(not 0) # True # not önüne geldiği ifadenin tersini döndürür. 
 print(not 1) # False # not operatörü, True ve False değerlerini tersine çevirir.
 
-print('Mukaddes' or [])
+print('Mukaddes' or []) # Mukaddes
 
 print('To be' or not 'To be') # To be # not 'To be' ifadesi False döner. False or 'To be' ifadesi 'To be' döner.
 
@@ -70,8 +70,7 @@ print(0 is not False) # True # is not operatörü nesne kimliğini (yani bellekt
 
 # String methods
 
-
-# input() # input() fonksiyonu, kullanıcıdan bir girdi alır ve çıktısı str olur.
+ # input() fonksiyonu, kullanıcıdan bir girdi alır ve çıktısı str olur.
 
 input("Adınızı giriniz :")
 
@@ -120,7 +119,7 @@ Yeni bir kağıda hello yazarsın, sonra elindekini değiştirirsin."""
 sehir = input("Yaşadığınız şehir : ")
 print(sehir)
 
-sehir_1 = input("Yaşadığınız şehir : ").lower() # String ifadeleri küçük harfe dönüştürür.
+sehir_1 = input("Yaşadığınız şehir : ").lower() 
 print(sehir_1)
 
 
@@ -144,6 +143,7 @@ print("birazdan mola vereceğiz.".title()) # Birazdan Mola Vereceğiz.
 
 print("python öğrenmek çok eğlenceli".capitalize()) # Python öğrenmek çok eğlenceli 
 print("python öğrenmek çok eğlenceli".title()) # Python Öğrenmek Çok Eğlenceli
+
 
 # swapcase() metodu, büyük harfleri küçük, küçük harfleri büyük yapar.
 
@@ -179,9 +179,9 @@ print("Techpro" + " " + "Education") # + operatörü string ifadelerle kullanıl
 
 print("Techpro" * 3) # * operatörü string ifadeleri verilen sayı kadar uç uca ekler
 
-print(name[4] + name[5] + name[6])
+print(name[4] + name[5] + name[6]) # pro
 
-print(name[2] + name[-5] + name[-1])
+print(name[2] + name[-5] + name[-1]) # can
 
 print(name[4:7]) # değişken[start : stop] start dahildir stop indexi dahil değildir
 
@@ -189,9 +189,11 @@ print(name[:4]) # 0'dan 4'e kadar olan karakterleri alır. 0 dahil 4 hariç.
 
 print(name[ : ]) # Tüm karakterleri alır.
 
-print(name[-2 : -5]) #Python her zaman soldan sağa çalışır. Python sola doğru gitmez, 
+print(name[-2 : -5]) # boş string döndürdü, Python her zaman soldan sağa çalışır. Python sola doğru gitmez. 
 
 print(name[-2:2]) # boş string döndürdü
+
+print(name[-2:-1]) # o
 
 print(name[-2:-5:-1]) # oit Eğer tersine gitmek istiyorsak step parametresi eklemek gerekir. -1 ile sağdan sola gidilir.
 
@@ -207,12 +209,12 @@ step için varsayılan değer 1’dir.
 print(name[-2::-5]) # ourT -2'den başlar, 5'er 5'er atlayarak indeksleri getirir
 
 # name = Techpro Education
-print(name[3:-4:2]) # hr dc 3'ten başlar, -5'e kadar 2'şer atlayarak indeksleri getirir. 3, 5, 7, 9, 11 bitiş indeksi dahil edilmez -4 (13) dahil değil ÖNEMLİ ******
+print(name[3:-4:2]) # hr dc 3'ten başlar, -4'e kadar 2'şer atlayarak indeksleri getirir. 3, 5, 7, 9, 11 bitiş indeksi dahil edilmez -4 (13) dahil değil ÖNEMLİ ******
 
 name_1 = name[3:7]
 print(name_1) # hpro
 
-print("Gülay"[:3])
+print("Gülay"[:3]) # Gül 
 
 
 
