@@ -125,3 +125,75 @@ print("Techpro Education".strip("Teno")) # chpro Educati  DİKKAT: stripe girile
 print("Goooooogle".strip("Go")) # gle    DİKKAT: stripe girilen Stringteki sıralama önemli değil, harfler başta ve sonda varsa silinir
 
 print("1+5j+2+6j+5+5j+-3-3j-9j".strip("1+5j-9j")) # 2+6j+5+5j+-3-3
+
+# Escape Sequences
+
+print('I\'m a python teacher.') # \ önüne geldiği karakterin görevini iptal eder.
+
+print("Python programlama dilinin adı \"piton yılanından\" gelmez.")
+# Python programlama dilinin adı "piton yılanından" gelmez.
+
+print("Python programlama \ndilinin adı \npiton yılanından gelmez.")
+"""Python programlama 
+dilinin adı 
+piton yılanından gelmez."""
+
+# \t tab kadar boşluk koyar
+
+print("Python \tprogramlama \tdilinin \tadı \tpiton \tyılanından \tgelmez.")
+# Python  programlama     dilinin         adı     piton   yılanından      gelmez.
+
+print("Python programlama", "dilinin adı", "piton yılanından gelmez.", sep = "\t")
+# Python programlama      dilinin adı     piton yılanından gelmez.
+
+print("Ptyhon", "Çok güzel\b", sep = "*****")
+
+print("\a") # bip sesi verir
+
+print("C:\aylar\nisan\toplam masraf")
+"""C:ylar
+isan    oplam masraf""" # \a, \n ve \t kaçış karakteri olarak algıladı. Dosya yolunu yanlış yorumladı. Bunun için "r" kullanılmalı.
+
+print(r"C:\aylar\nisan\toplam masraf") # C:\aylar\nisan\toplam masraf   kaçış karakterlerini ascii elemanı olarak kullanılmasını sağlar.
+
+# Ya da ters slash kullanabiliriz. Yukardaki örnekteki gibi ters slash önüne geldiği karaktewrin görevini iptal eder.
+print("C:\\aylar\\nisan\\toplam masraf") # C:\aylar\nisan\toplam masraf
+
+
+# if & elif & else
+
+# if
+
+x = 4
+if x < 5:
+    print("x 5'ten küçüktür.") 
+
+x = 7
+if x < 5:
+    print("x 5'ten küçüktür.")
+
+"""if 2 != 3:
+print("Girinti önemli")""" # IndentationError: expected an indented block after 'if' statement on line 1
+
+"""if 4 > 1
+    print(": önemli") """ # SyntaxError: expected ':'
+
+if "Uluğbek":
+    print("Sizce bu kod çalışır mı") # Sizce bu kod çalışır mı
+
+# else
+
+if 5 > 4:
+    print("if kısmı çalıştı.")
+else:   # değilse
+    print("else kısmı çalıştı.")
+# if kısmı çalıştı.
+
+if 3 > 4 :
+    print("if kısmı çalıştı.")
+else:
+    print("else kısmı çalıştı") 
+# else kısmı çalıştı
+
+
+
