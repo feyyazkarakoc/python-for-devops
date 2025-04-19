@@ -32,7 +32,7 @@ print("hello".isalpha()) # True çünkü sadece harflerden oluşuyor.
 
 print("hello123".isalpha()) # False çünkü içinde rakam var.
 
-print("Merhaba Dünya".isalpha()) # True çünkü sadece harflerden oluşuyor.
+print("Merhaba Dünya".isalpha()) # False çünkü içinde boşluk var.
 
 
 """
@@ -48,7 +48,7 @@ Sen kendi fonksiyonlarını Python'da her zaman snake_case ile yazmalısın, ç�
 Python’un kendi stilinde istisna diyebiliriz.
 Python’un hazır metotlarının büyük kısmı flatcase (yani tamamen küçük harf ve alt çizgi yok) olarak yazılmıştır ama bazıları snake_case şeklindedir.
 Python'da kendi yazdığımız fonksiyonlarda ve modern API'de snake_case önerilir ama
-Hazır metotların büyük kısmı flatcase. 
+hazır metotların büyük kısmı flatcase. 
 """
 
 # islower() : string ifadenin sadece küçük harflerden mi oluştuğunu kontrol eder.
@@ -129,6 +129,7 @@ print("1+5j+2+6j+5+5j+-3-3j-9j".strip("1+5j-9j")) # 2+6j+5+5j+-3-3
 # Escape Sequences
 
 print('I\'m a python teacher.') # \ önüne geldiği karakterin görevini iptal eder.
+# I'm a python teacher.
 
 print("Python programlama dilinin adı \"piton yılanından\" gelmez.")
 # Python programlama dilinin adı "piton yılanından" gelmez.
@@ -195,5 +196,123 @@ else:
     print("else kısmı çalıştı") 
 # else kısmı çalıştı
 
+# elif (else if'in kısaltılmışı), çok sayıda elif bloğu kullanılabilir
 
+x = 8
+if x < 2:
+    print("if bloğu çalıştı.")
+elif x < 9:
+    print("elif bloğu çalıştı.")
+# elif bloğu çalıştı.
+
+x = 2
+if x < 2:
+    print("if bloğu çalıştı.")
+elif x < 9:
+    print("1. elif bloğu çalıştı.")
+elif x == 2:
+    print("2. elif bloğu çalıştı.")
+# 1. elif bloğu çalıştı.
+# Python yukarıdan aşağı kodları çalıştırır. if bloğu içerisindeki koşullardan ilk true olan koşulu yazdırır. 
+
+x = 8
+if x < 2:
+    print("if kısmı çalıştı.")
+elif x > 9:
+    print("elif kısmı çalıştı.")
+else:
+    print("else kısmı çalıştı.")
+
+# else kısmı çalıştı.
+
+
+if True:
+    print("Bu if bloğu hep çalışır.")
+    print(2 * 5)
+    print(5 / 3)
+
+    """Bu if bloğu hep çalışır.
+10
+1.6666666666666667"""
+
+
+if 5 > 3 :
+    print("5 3'ten büyüktür.")
+if 4 > 2 :
+    print("4 2'den büyüktür.")
+# 5 3'ten büyüktür.
+# 4 2'den büyüktür.
+
+if 4 and False:
+    print("Sizce bu çıktıyı yazar mı?")
+else:
+    print("Yoksa else kısmı mı çalışır.")
+# Yoksa else kısmı mı çalışır.
+
+"""
+1- input ile kullanıcıdan yaşını öğrenin.
+2- Eğer yaşı 31'un altındaysa "Çok gençsin" yazdırın
+3. Eğer yaşı 31 (dahil) - 60 (dahil) aralığındaysa "Olgunlaşmışsın" yazdırın
+4- Eğer yaşı 60'dan büyükse "Yaşlısın" yazdırın """
+
+
+yas = int(input("Yaşınızı giriniz:")) # input str döndürür
+
+
+
+if yas>0 and yas < 31: # javadan farklı olarak 0 < yas < 31
+    print("Çok gençsin")
+elif yas >= 31 and yas <= 60: # javadan farklı olarak 31 =< yas <= 60
+    print("Olgunlaşmışsın")
+elif yas > 60 and yas <=100: # javadan farklı olarak 60 < yas <= 100
+    print("Yaşlısın")
+else:
+    print("Hatalı giriş")
+
+
+
+if 0 < yas < 31:
+     print("Çok gençsin")
+elif 31 <= yas <= 60:
+      print("Olgunlaşmışsın")
+elif 60 < yas < 100:
+     print("Yaşlısın")
+else:
+    print("Hatalı giriş")
+
+
+
+
+# nested if
+
+if x < 9:
+    if 5 > 8:
+        print("This is true")
+    else:
+        print("this is false")
+elif 4 > 9:
+    print("This is elif")
+
+# Kullanıcıdan input ile notunu öğrenin.Harf sistemine göre bu notun karşılığını veren python programını yazınız.
+
+puan = float(input("Puanınızı giriniz:"))
+if puan >= 90:
+    notun = 'A'
+elif puan >= 80:
+    notun ='B'
+elif puan >= 70:
+    notun = 'C'
+elif puan >= 60:
+    notun = 'D'
+else:
+    notun = 'E'
+print(f"Girdiğiniz puan : {puan}, Harf notunuz : {notun}")
+
+
+
+
+# Ternary operator
+x = 4
+result = "x 5'ten büyük değildir" if x < 5 else "x 5'ten büyük değildir."
+print(result)
 
