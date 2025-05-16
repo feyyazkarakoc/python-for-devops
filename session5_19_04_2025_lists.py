@@ -103,10 +103,10 @@ print(len(liste_1)) # 7
 print(len("techpro")) # 7
 
 # noktaya ulaşmak istiyoruz
-print(liste[4][1]) # '1.5' tırnak içinde yazılmıi demek ki türü string. O halde index kullanabiliriz.
+print(liste[4][1]) # '1.5' tırnak içinde yazılmış demek ki türü string. O halde index kullanabiliriz.
 print(list(liste[4])[1]) # ikinci yol
 
-# 4. elemanı floata dönnüştürelim
+# 4. elemanı floata dönüştürelim
 x = float(liste[4])
 print(type(x)) # <class 'float'>
 
@@ -145,7 +145,7 @@ print(len(sayılar)) # 8
 
 sayılar.extend([8, 9])
 print(sayılar) # [1, 2, 3, 4, 5, 6, 7, [8, 9], 8, 9] extend metodu iterable olan her
-# türlü veriyi alıp her elemanının ayrı ayrı listeye ekler
+# türlü veriyi alıp her elemanını ayrı ayrı listeye ekler
 # extend liste olarak değil, tek tek ekler, birden fazla eleman olarak ekler
 
 sayılar.extend("techpro")
@@ -241,7 +241,7 @@ print(renk.pop()) # beyaz sondaki elemanı sildi ve çıktı olarak verdi
 
 print(liste_1) # ['c', 'e', 'h', 'o', 'p', 'r', 't']
 print(liste_1.pop(0)) # c içerisine index verebiliyoruz, verdiğimiz indexteki elemanı siler, sildiği elemanı döndürür
-# remove() içine siilmek istediğimiz elemanı veriyorduk, remove o elemanı siler, ama eleamnı döndürmez
+# remove() içine silmek istediğimiz elemanı veriyorduk, remove o elemanı siler, ama elemanı döndürmez
 
 # clear()
 
@@ -265,6 +265,7 @@ print(liste) # [1, 3, True, False, [1, 2, 3], '1.5', 'max']
 yeni_liste = liste.copy()
 print(yeni_liste) # [1, 3, True, False, [1, 2, 3], '1.5', 'max']
 
+# extend()
 yeni_liste.extend("selam")
 print(yeni_liste) # [1, 3, True, False, [1, 2, 3], '1.5', 'max', 's', 'e', 'l', 'a', 'm']
 print("-"*20)
@@ -348,6 +349,8 @@ elif yıl % 4 == 0:
 else:
     print(f"Girdiğiniz yıl ({yıl}) artık yıl değildir.")
 
+
+# veya
 yıl = int(input("Bir yıl giriniz: "))
 
 if (yıl % 4 == 0 and yıl % 100 != 0) or (yıl % 400 == 0):
