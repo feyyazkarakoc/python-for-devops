@@ -440,9 +440,77 @@ print(dict_6["İzmir"]) # Rüzgarlı # aynı işlemi [] ile de yapabiliriz
 # nested dicts
 
 myFamily = {
-        "chiild1" : {
+        "child1" : {
                 "name" : "John",
                 "year" : 2004
         },
-        ""
+        "child2" : {
+                "name" : "Jane",
+                "year" : 2006
+        },
+        "child3" : {
+                "name" : "Jim",
+                "year" : 2008
+        }
 }
+
+print(myFamily) # {'child1': {'name': 'John', 'year': 2004}, 'child2': {'name': 'Jane', 'year': 2006}, 'child3': {'name': 'Jim', 'year': 2008}}
+
+print(myFamily.items()) # dict_items([('child1', {'name': 'John', 'year': 2004}), ('child2', {'name': 'Jane', 'year': 2006}), ('child3', {'name': 'Jim', 'year': 2008})])
+
+print(myFamily.get("child1")) # {'name': 'John', 'year': 2004} # child1 keyinin value'sunu verir
+
+print(myFamily.get("child2").get("name")) # Jane # child2 keyinin value'sunun name keyinin value'sunu verir
+
+myFamily.get("child3").update({"gender" : "male"})
+print(myFamily) # {'child1': {'name': 'John', 'year': 2004}, 'child2': {'name': 'Jane', 'year': 2006}, 'child3': {'name': 'Jim', 'year': 2008, 'gender': 'male'}}
+
+# not, not in
+
+"""
+in ve not in Python'da operatördür, yani bir fonksiyon gibi değil, dil yapısı (syntax) olarak tanımlıdır — bu yüzden üstüne gelince imza (signature) çıkmaz.
+
+in Operatörü
+Kullanımı:
+element in iterable
+Anlamı:
+Soldaki öğe (element), sağdaki yapının (iterable, yani üzerinde dolaşılabilen veri yapısı: liste, string, tuple, set, sözlük vs.) içinde var mı?
+Sonuç: True ya da False döner.
+
+not in Operatörü
+Kullanımı:
+element not in iterable
+Anlamı:
+Soldaki öğe, sağdaki yapının içinde yok mu?
+Yani not (element in iterable) ile aynıdır.
+"""
+
+print("e" in "hello") # True # "e" harfi hello kelimesinde var mı
+
+print("a" in "hello") # False # "a" harfi hello kelimesinde var mı
+
+print("l" not in "hello") # False # "l" harfi hello kelimesinde yok mu
+
+print(1 in [1, 2, 3]) # True # 1 sayısı listede var mı
+
+print("child1" in myFamily) # True # "child1" keyi myFamily dictionary'sinde var mı
+
+print("name" in myFamily) # False # "name" keyi myFamily dictionary'sinde var mı
+
+print(myFamily.values()) # dict_values([{'name': 'John', 'year': 2004}, {'name': 'Jane', 'year': 2006}, {'name': 'Jim', 'year': 2008, 'gender': 'male'}])
+print("name" in myFamily.values()) # False # "name" value'su myFamily dictionary'sinde var mı
+
+print("name" in myFamily["child1"]) # True # "name" keyi child1 dictionary'sinde var mı
+
+print(myFamily["child1"].values()) # dict_values(['John', 2004])
+print("John" not in myFamily["child2"].values()) # True # "John" value'su child2 dictionary'sinde yok mu
+print("John" in myFamily["child1"].values()) # True # "John" value'su child1 dictionary'sinde var mı
+
+print(myFamily.get("child3")) # {'name': 'Jim', 'year': 2008, 'gender': 'male'}
+print("name" in myFamily.get("child3")) # True # "name" keyi child3 dictionary'sinde var mı
+
+print(myFamily.get("child3").values()) # dict_values(['Jim', 2008, 'male'])
+print("Jim" not in myFamily.get("child3").values()) # False 
+
+print(list(myFamily.get("child3").values())) # ['Jim', 2008, 'male'] list yapısında
+print(list(myFamily.get("child3").keys())) # ['name', 'year', 'gender'] list yapısında
