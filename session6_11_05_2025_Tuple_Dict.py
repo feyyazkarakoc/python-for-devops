@@ -261,5 +261,188 @@ Gerçek bir set mi?	Hayır, ama set(d.keys()) ile dönüştürülebilir
 
 print(dict_1.keys()) # dict_keys(['key1', 'key2', 'key3']) # sadece key'leri verir
 
+print(dict_1.values()) # dict_values(['value1', 'value2', 'value3']) # sadece value'ları verir
+
+print(dict_1[0]) # KeyError: 0 # dictinary'lerde indexleme yok, key ile erişim sağlanır
+
+print(dict_1["key2"]) # value2 # key ile çağırdık
+print(dict_1["value2"]) # KeyError: 'value2' # value ile key'e erişim yok, buraya sadece key yazılmalı
+
+dict_2 = {False : 0, True : 1}
+print(dict_2) # {False: 0, True: 1} 
+print(dict_2[True]) # 1
+
+dict_3 = {1 : ["a", "b", "c"], 2 : (3 , 4)}
+print(dict_3) # {1: ['a', 'b', 'c'], 2: (3, 4)} # key'ler int, value'lar list ve tuple
+print(dict_3[1]) # ['a', 'b', 'c'] # index değil key
+
+dict_4 = {1 : ["a", "b", "c"], 1 : (3, 4)}
+print(dict_4) # {1: (3, 4)} # Aynı key birden fazlaysa sonuncuyu kabul eder
+
+dict_5 = dict(a = [1, 2, 3], b = "techpro", c = True)
+print(dict_5) # {'a': [1, 2, 3], 'b': 'techpro', 'c': True} # dict() metodu ile dictionary oluşturma
+print(dict_5.keys()) # dict_keys(['a', 'b', 'c']) # key'leri verir
+print(dict_5.values()) # dict_values([[1, 2, 3], 'techpro', True]) # value'ları verir
+
+"""
+Farklı dict oluşturma yolları: 
+Biçim	                Açıklama
+dict()	              Boş sözlük
+dict({'a': 1})	      Mapping (başka bir sözlük)
+dict([('a', 1)])      Iterable (liste/tuple içinde çiftler)
+dict(a=1, b=2)	      Keyword argümanlarla sözlük
+"""
+
+"""
+kwargs Python'da fonksiyonlara anahtar-değer çifti olarak istediğin kadar argüman geçirebilmeni sağlayan bir yapıdır.
+Tanım: **kwargs
+kwargs → "keyword arguments" (anahtar kelime argümanları)
+** operatörü ile kullanılır.
+Fonksiyona istediğin sayıda isimli (anahtar=değer) argüman gönderirsin.
+Bu argümanlar fonksiyonda bir sözlük (dict) olarak toplanır.
+Örnek:
+
+def selamla(**kwargs):
+    print(kwargs)
+
+selamla(isim="Ali", yas=25)
+Çıktı:
+{'isim': 'Ali', 'yas': 25}
+Burada:
+isim="Ali" ve yas=25 → keyword arguments
+Bunlar kwargs isimli bir sözlüğe dönüşür.
+
+*args ile farkı:
+Yapı	   Ne toplar               Türü
+*args	   Sırasız argümanlar	   tuple
+**kwargs   Anahtar=değer çiftleri  dict
+
+Sonuç
+**kwargs = fonksiyona sınırsız sayıda isimli argüman verebilmeni sağlar.
+İçeride bu argümanlar bir sözlük (dict) haline gelir ve işleyebilirsin.
+"""
+
+# print(dict(1 = "a", 2 = "b")) # SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
+"""print(dict(1 = "a", 2 = "b"))    
+Yasak çünkü:
+1 ve 2 geçerli değişken isimleri (identifier) değildir.
+key=value biçiminde kullanılacak key'ler Python değişkeni gibi yazılmalı.
+Çözüm: ya dict([(1, "a"), (2, "b")]) kullan ya da dict(one="a") gibi string-key kullan. """
+# print(dict("1" = "a", "2" = "b")) # SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
+
+print(dict(name1 = "Ayşe", name2 = "Betül")) # {'name1': 'Ayşe', 'name2': 'Betül'} # değişken ismine uygun key verildiğinde kabul ediyor
+
+# dict_names = {name1 : "Uluğbek", name2 : "Ümit", name3 : "Burak", name4 : "Betül"} # NameError: name 'name1' is not defined 
+"""
+Burada name1, name2, name3, name4 Python’da tanımlı bir değişken değil.
+Python bu name1 gibi ifadeleri string değil, değişken zanneder.
+Ama bu değişkenler tanımlı olmadığı için NameError oluşur.
+Çözüm:
+Key’leri string yapmak gerekiyor:
+"""
+dict_names = {"name1" : "Uluğbek", "name2" : "Ümit", "name3" : "Burak", "name4" : "Betül"}
+print(dict_names) # {'name1': 'Uluğbek', 'name2': 'Ümit', 'name3': 'Burak', 'name4': 'Betül'}
+
+# dict mutable
+# keylerin valuelerini (anahtarların değerlerini) değiştirebiliriz
+dict_names["name4"] = "Ayşe"
+print(dict_names) # {'name1': 'Uluğbek', 'name2': 'Ümit', 'name3': 'Burak', 'name4': 'Ayşe'}
+
+person_info = {"name" : ["Ali", "Veli"], "age" : [25, 30]}
+print(person_info) # {'name': ['Ali', 'Veli'], 'age': [25, 30]}
+print(person_info["name"]) # ['Ali', 'Veli']
+print(person_info["name"][1]) # Veli # "name" keyi için value list'tir. O halde list için indexleme ve list metotlarını kullanabiliriz
+person_info["name"].append("Ayşe")
+print(person_info["name"]) # ['Ali', 'Veli', 'Ayşe'] # list'e eleman ekledik
+print(person_info) # {'name': ['Ali', 'Veli', 'Ayşe'], 'age': [25, 30]}
+person_info["age"].append(25)
+print(person_info) # {'name': ['Ali', 'Veli', 'Ayşe'], 'age': [25, 30, 25]}
 
 
+
+# update() metodu ile bir sözlüğe yeni key-value ekleyebiliriz.
+"""
+update() metodu mevcut bir sözlüğü güncellemek için kullanılır. Yani başka bir sözlük veya anahtar-değer çiftleri verildiğinde,
+bunları mevcut sözlüğe ekler veya günceller.
+update() metodunun ikinci kullanım şekli:
+Anahtar-değer çiftlerini keyword argument şeklinde de verebilirsin.
+Örnek:
+d.update(one="1", two="2")
+Burada one ve two → string anahtarlar, "1" ve "2" → string değerlerdir.
+Burada **kwargs: str demek:
+Anahtarlar str olacak (zaten Python bunu zorunlu kılar), ve değerler de str olmalı
+Bu metodun dönüş değeri yoktur. Yani None döner. update() metodu sözlüğü yerinde (in-place) değiştirir, yeni bir sözlük döndürmez.
+
+ Kısaca Özetlersek:
+update() metodu, ya:
+Bir sözlük gibi bir yapı alır (anahtar ve değerleri str türünde),
+Veya key=value şeklinde keyword argümanları alır,
+Ve mevcut sözlüğü yerinde günceller.
+Dönüş değeri: None
+"""
+
+print(person_info.keys()) # dict_keys(['name', 'age'])
+
+# Bir keyi nasıl değiştiriyorsak, aynı yöntemle yeni bir key ekleyebiliriz.
+person_info["job"] = ["Teacher", "Doctor", "Devops Engineer"]
+print(person_info) # {'name': ['Ali', 'Veli', 'Ayşe'], 'age': [25, 30, 25], 'job': ['Teacher', 'Doctor', 'Devops Engineer']}
+
+print(dict_1) # {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+dict_1["key4"] = "value4"
+print(dict_1) # {'key1': 'value1', 'key2': 'value2', 'key3': 'value3', 'key4': 'value4'}
+
+dict_1.update({"key5" : "value5", "key6" : "value6"}) # yeni bir dict ekler
+print(dict_1) # {'key1': 'value1', 'key2': 'value2', 'key3': 'value3', 'key4': 'value4', 'key5': 'value5', 'key6': 'value6'}
+
+# concat yapılmaz
+print({1 : "bir", 2 : "iki"} + {3 : "üç", 4 : "dört"}) # TypeError: unsupported operand type(s) for +: 'dict' and 'dict'
+
+dict_1["key5", "key6"] = "value5", "value6"  # virgül ile verdiklerimizi tuple olarak algıladı, veya [] içine tuple girebiliriz
+print(dict_1)
+# {'key1': 'value1', 'key2': 'value2', 'key3': 'value3', 'key4': 'value4', 'key5': 'value5', 'key6': 'value6', ('key5', 'key6'): ('value5', 'value6')}
+
+# clear() metodu ile dictionary'i temizleyebiliriz
+
+dict_1.clear()
+print(dict_1) # {} # dictionary'i temizledik
+
+dict_5.clear()
+print(dict_5) # {}
+
+print(dict_3) # {1: ['a', 'b', 'c'], 2: (3, 4)} 
+print(dict_2) # {False: 0, True: 1}
+
+print(dict_2 |dict_3) # {False: 0, True: ['a', 'b', 'c'], 2: (3, 4)} # python 3.9 ve sonrası | operatörü ile birleştirme yapabilir
+
+dict_6 = {"İstanbul"  : "Yağışlı", "Ankara" : "Karlı"} |{"İzmir" : "Rüzgarlı", "Antalya" : "Güneşli"}
+print(dict_6) # {'İstanbul': 'Yağışlı', 'Ankara': 'Karlı', 'İzmir': 'Rüzgarlı', 'Antalya': 'Güneşli'}
+
+dict_6.update(dict_2)
+print(dict_6) # {'İstanbul': 'Yağışlı', 'Ankara': 'Karlı', 'İzmir': 'Rüzgarlı', 'Antalya': 'Güneşli', False: 0, True: 1}
+
+
+# pop() metodu ile dictionary'den bir key-value çiftini silebiliriz.
+
+print(dict_6.pop("İstanbul")) # 'Yağışlı' # veriilen keyi siler ve valuesunu yazdırır
+print(dict_6) # {'Ankara': 'Karlı', 'İzmir': 'Rüzgarlı', 'Antalya': 'Güneşli', False: 0, True: 1}
+
+print(dict_6.pop("Van")) # KeyError: 'Van' # olmayan bir keyi silmeye çalıştık
+
+print(dict_6.pop(0)) # 0 # False'ı 0 olarak görür, bu nedenle 0 verdiğimizde False: 0 çifitini siler
+
+
+# get() metodu ile dictionary'den bir key'in value'sunu alabiliriz.
+
+print(dict_6.get("İzmir")) # Rüzgarlı # verilen keyin value'sunu verir
+print(dict_6["İzmir"]) # Rüzgarlı # aynı işlemi [] ile de yapabiliriz
+
+
+# nested dicts
+
+myFamily = {
+        "chiild1" : {
+                "name" : "John",
+                "year" : 2004
+        },
+        ""
+}
