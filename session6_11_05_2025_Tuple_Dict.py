@@ -85,7 +85,7 @@ print(type(("hello",))) # <class 'tuple'>
 print(type(("hello"))) # <class 'str'>
 
 print(("Ayşe", "Uluğbek", "Mukaddes") + ("Ali",)) # ('Ayşe', 'Uluğbek', 'Mukaddes', 'Ali')
-# Listelerde olduğu gibi toplama operatörü tuple'da da concat işlemi yayor.
+# Listelerde olduğu gibi toplama operatörü tuple'da da concat işlemi yapıyor.
 
 print(("Ayşe", "Uluğbek", "Mukaddes") * 2) # ('Ayşe', 'Uluğbek', 'Mukaddes', 'Ayşe', 'Uluğbek', 'Mukaddes')
 
@@ -178,7 +178,7 @@ else:
 print(ord("a")) # 97
 
 
-# chr() ASCII'deki sayısal karşılığı verir.
+# chr() ASCII'deki  karşılığı verir.
 
 print(chr(98)) # b
 
@@ -233,6 +233,7 @@ print(dict_1.items()) # dict_items([('key1', 'value1'), ('key2', 'value2'), ('ke
 
 
 """
+keys() metodu:
 set-like object "Küme-benzeri nesne" demek. Yani bu nesne tıpkı bir set (küme) gibi davranır:
 Tekrar eden elemanlar yok
 Elemanlar sırasızdır
@@ -278,6 +279,19 @@ print(dict_3[1]) # ['a', 'b', 'c'] # index değil key
 
 dict_4 = {1 : ["a", "b", "c"], 1 : (3, 4)}
 print(dict_4) # {1: (3, 4)} # Aynı key birden fazlaysa sonuncuyu kabul eder
+print(len(dict_4)) # 1 # sadece bir tane key var, o yüzden 1 döner
+"""
+Python'da bir sözlük (dictionary) tanımlarken aynı key (anahtar) birden fazla kez kullanılırsa, sonuncusu geçerli olur. 
+Çünkü bir sözlükte anahtarlar benzersiz olmalıdır.
+Python bu durumda şunu yapar:
+İlk 1: ["a", "b", "c"] kaydını sözlüğe ekler.
+Sonra aynı anahtar olan 1: (3, 4) geldiğinde öncekini siler, yerine bunu yazar.
+Neden bu böyle?
+Çünkü sözlükler şöyle çalışır:
+Her anahtar benzersiz olmalı (tıpkı bir kimlik numarası gibi).
+Eğer birden fazla aynı anahtar varsa, sonuncusu "üstüne yazar".
+Sözlükte veriye erişim O(1) sürede yapılır — bu performansı sağlayabilmek için anahtarların benzersiz olması gerekir.
+"""
 
 dict_5 = dict(a = [1, 2, 3], b = "techpro", c = True)
 print(dict_5) # {'a': [1, 2, 3], 'b': 'techpro', 'c': True} # dict() metodu ile dictionary oluşturma
@@ -373,7 +387,7 @@ Burada **kwargs: str demek:
 Anahtarlar str olacak (zaten Python bunu zorunlu kılar), ve değerler de str olmalı
 Bu metodun dönüş değeri yoktur. Yani None döner. update() metodu sözlüğü yerinde (in-place) değiştirir, yeni bir sözlük döndürmez.
 
- Kısaca Özetlersek:
+Kısaca Özetlersek:
 update() metodu, ya:
 Bir sözlük gibi bir yapı alır (anahtar ve değerleri str türünde),
 Veya key=value şeklinde keyword argümanları alır,
@@ -413,6 +427,12 @@ print(dict_3) # {1: ['a', 'b', 'c'], 2: (3, 4)}
 print(dict_2) # {False: 0, True: 1}
 
 print(dict_2 |dict_3) # {False: 0, True: ['a', 'b', 'c'], 2: (3, 4)} # python 3.9 ve sonrası | operatörü ile birleştirme yapabilir
+""" 
+Python dict birleştirmede aynı hash ve eşitliğe sahip anahtarlar varsa:
+Değer sağdakinden gelir
+Anahtar tipi soldaki kalır
+True ve 1 aynı anahtar olduğu için değer güncellenir, fakat ilk karşılaşılan anahtar olan True (bool) yazılmaya devam eder.
+"""
 
 dict_6 = {"İstanbul"  : "Yağışlı", "Ankara" : "Karlı"} |{"İzmir" : "Rüzgarlı", "Antalya" : "Güneşli"}
 print(dict_6) # {'İstanbul': 'Yağışlı', 'Ankara': 'Karlı', 'İzmir': 'Rüzgarlı', 'Antalya': 'Güneşli'}
@@ -428,7 +448,7 @@ print(dict_6) # {'Ankara': 'Karlı', 'İzmir': 'Rüzgarlı', 'Antalya': 'Güneş
 
 print(dict_6.pop("Van")) # KeyError: 'Van' # olmayan bir keyi silmeye çalıştık
 
-print(dict_6.pop(0)) # 0 # False'ı 0 olarak görür, bu nedenle 0 verdiğimizde False: 0 çifitini siler
+print(dict_6.pop(0)) # 0 # False'ı 0 olarak görür, bu nedenle 0 verdiğimizde False: 0 çiftini siler
 
 
 # get() metodu ile dictionary'den bir key'in value'sunu alabiliriz.
