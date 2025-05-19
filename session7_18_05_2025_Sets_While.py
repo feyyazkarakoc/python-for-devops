@@ -98,7 +98,7 @@ set1 = {"blue", "green", "white", "magenta", "blue", "blue"} # dictioary'de de {
 print(set1) # {'green', 'white', 'blue', 'magenta'} # tekrar eden elemanları almadı, unordered sıraladı
 print(len(set1)) # 4 # tekrar eden elemanları almadı, sadece bir tane blue aldı, unique olmalı
 
-set2 = {[1,2,3,5,4,2,3,4,7,9,8,6]} # TypeError: unhashable type: 'list' # list mutable olduğu için hata verir
+# set2 = {[1,2,3,5,4,2,3,4,7,9,8,6]} # TypeError: unhashable type: 'list' # list mutable olduğu için hata verir
 set2 = set([1,2,3,5,4,2,3,4,7,9]) # set() ile listeyi set'e çeviriyoruz
 print(set2) # {1, 2, 3, 4, 5, 7, 9} 
 print(len(set2)) # 7
@@ -168,7 +168,7 @@ print(b) # {'ı', 'y', 'k', 's', 'a'}
 b.remove("a")
 print(b) # {'ı', 'y', 'k', 's'}
 
-b.remove("i") # KeyError: 'i' # remove() verilen eleman yoksa hata verir
+# b.remove("i") # KeyError: 'i' # remove() verilen eleman yoksa hata verir
 # bu hatayı almamak için discard() kullanabiliriz
 b.discard("i") # verilen eleman yoksa hata vermez
 print(b) # {'ı', 'y', 's'} 
@@ -176,4 +176,103 @@ print(b) # {'ı', 'y', 's'}
 # pop()
 
 set1 = set("selam")
-print(set1) {'e', 'l', 'm', 's', 'a'}
+print(set1) # {'e', 'l', 'm', 's', 'a'}
+print(set1.pop()) # s  # 'e' # set'ten rastgele bir eleman siler ve o elemanı döner
+print(set1) # {'l', 'e', 'm', 'a'}
+
+help(set.pop)
+"""
+Help on method_descriptor:
+
+pop(...) unbound builtins.set method
+    Remove and return an arbitrary set element.
+    Raises KeyError if the set is empty.
+"""
+help(list.pop)
+"""
+Help on method_descriptor:
+
+pop(self, index=-1, /) unbound builtins.list method
+    Remove and return item at index (default last).
+
+    Raises IndexError if list is empty or index is out of range.
+"""
+
+# add()
+
+print(set1) # {'e', 'm', 'l', 'a'}   
+set1.add("s")
+print(set1) # {'s', 'e', 'm', 'l', 'a'}
+
+set1.add("b", "c") # TypeError: set.add() takes exactly one argument (2 given)
+
+set1.add((1, 2, 3)) # set'e tuple ekleyebiliriz
+print(set1) # {'s', 'e', (1, 2, 3), 'm', 'l', 'a'}
+
+set1.add([4, 5, 6]) # TypeError: unhashable type: 'list' # set'e liste ekleyemeyiz # set verileri içerisinde liste tipini tutmazlar
+
+set1.add({"a" : 1, "b": 2}) # TypeError: unhashable type: 'dict' # set'e dict ekleyemeyiz # set verileri içerisinde dict tipini tutmazlar
+
+set1.add("hello")
+print(set1) # {'s', 'hello', 'e', (1, 2, 3), 'm', 'l', 'a'}
+
+a = set("hello")
+b = set("world")
+a.update(b) # a.union(b) ile aynı işlevi görmüş oldu
+print(a) # {'w', 'e', 'o', 'h', 'd', 'l', 'r'}
+
+# While Loop
+# while döngüsü, bir koşul doğru olduğu sürece döngüyü çalıştırır
+# while koşul : # koşul True ise alttaki kod bloğu çalışır. Koşul False olana kadar kod bloğu çalışır
+    #... code ...
+"""
+x = 5 
+while 10 > x :
+    print("Bu döngü sonsuza kadar çalışacak...") # sonsuz döngü
+
+"""
+
+x = 5 
+while 10 > x :
+    print("Bu döngü ne zaman biter?")
+    x = x +1 # x += 1
+print("Döngü bitti.")
+
+x = 1
+while x < 10 :
+    print(x)
+    x += 1
+    print("x'e 1 ekledik")
+print("Döngü bitti.")
+
+liste = ["Malatya", "Konya", "İzmir", "İstanbul", "Ankara"]
+x = 0
+while x < len(liste) :
+    print(liste[x])
+    x += 1
+print("\nDöngü bitti.")
+
+y = -3
+while -5 < y < -1 :
+    print(y)
+    print("Her zaman pozitif ol")
+    y += 1
+
+"""
+while True :
+        print("Sonsuz döngü!")
+"""
+
+while False :
+    print("Bu satır çalışmayacak")
+
+y = True
+while y :
+    print("while döngüsü koşul False olana kadar çalışır.")
+    y = False
+
+x = 0
+while x < 11 :
+    print(x, end = " * ")
+    x += 2
+    print(x, end = " # ")
