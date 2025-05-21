@@ -276,3 +276,110 @@ while x < 11 :
     print(x, end = " * ")
     x += 2
     print(x, end = " # ")
+
+
+
+# 1'den 200'e kadar asal sayıları yazdırabilir miyiz?
+
+x = 1
+asal_sayilar = []
+while x < 201:
+    if x > 1 :
+        y = 2
+        while y <= x :
+            if x % y == 0:
+                break
+            y += 1
+        if y == x :
+            asal_sayilar.append(x)
+    x += 1
+print(asal_sayilar)
+
+"""
+x = 1 
+asal_sayilar = []
+while x < 201 :
+    if x > 1 :
+        y = 2
+        while y <= x :
+            if x % y == 0:
+                break
+            y += 1
+        if y == x :
+            asal_sayilar.append(x)
+    x += 1
+print(asal_sayilar)
+"""
+
+
+x = 1
+asal_sayilar = []
+while x < 201:
+    if x > 1 :
+        asal = True
+        y = 2
+        while y * y <= x  :
+            if x % y == 0 :
+                asal = False
+                break
+            y += 1
+        if asal :
+            asal_sayilar.append(x)
+    x += 1
+print(asal_sayilar)
+
+"""
+x = 1
+asal_sayilar = []
+while x < 201 :
+    if x > 1 :
+        asal = True
+        y = 2
+        while y * y <= x :
+            if x % y == 0 :
+                asal = False
+                break
+            y += 1
+        if asal :
+            asal_sayilar.append(x)
+    x += 1
+print(asal_sayilar)
+"""
+
+x = 1
+asal_sayilar = []
+while x < 201 :
+    bolen = 1
+    bolen_sayisi = 0
+    while bolen <= x :
+        if x % bolen == 0 :
+            bolen_sayisi += 1
+        bolen += 1
+    if bolen_sayisi == 2 :
+        asal_sayilar.append(x)
+    x += 1
+print(asal_sayilar)
+
+sayilar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 5, 245, 22, 65, 21]
+tek_sayilar = []
+cift_sayilar = []  
+index = 0
+len_liste = len(sayilar)
+while index < len_liste :
+    if  sayilar[index] % 2 == 0 :
+        cift_sayilar.append(sayilar[index])
+    else:
+        tek_sayilar.append(sayilar[index])
+    index += 1
+print(cift_sayilar, tek_sayilar, sep = "\n")
+
+while [] :
+    print("Bu satır çalışmayacak") # boş liste False olduğu için çalışmaz
+print("Döngü bitti")
+
+x = int(input("Bir sayı girin: "))
+while x : # x 0 olduğunda döngü biter, 0 False olarak kabul edilir
+    print(x * 3)
+    x -= 1
+print("Döngü bitti.")
+
