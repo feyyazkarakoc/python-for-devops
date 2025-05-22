@@ -12,7 +12,7 @@ Set içinde sadece hashlenebilir (değiştirilemez) türler olabilir.”
 Bu, bir set'in içindeki elemanların sabit (değiştirilemez) olması gerektiği anlamına gelir.
 Python’da set, elemanlarını benzersizliğe göre saklar. Bunu yaparken elemanların hash() değerini kullanır.
 hash() fonksiyonu değişmeyen (immutable) türlerde çalışır.
- Set içine konabilecek türler:
+Set içine konabilecek türler:
 int, float, str, bool, tuple (içinde değiştirilebilir bir şey yoksa)
 Set içine konamayacak türler:
 list, dict, set → çünkü bunlar değiştirilebilir (mutable) ve hashlenemez.
@@ -92,7 +92,8 @@ z = {1}
 print(z)
 print(type(z)) # <class 'set'> # 
 
-print(set("techpro education")) # {'d', 'o', ' ', 'i', 'a', 'p', 'r', 'u', 'h', 't', 'n', 'c', 'e'} # tekrar eden harfleri almadı, boşluk karakterini de aldı, unordered sıraladı
+print(set("techpro education")) # {'d', 'o', ' ', 'i', 'a', 'p', 'r', 'u', 'h', 't', 'n', 'c', 'e'} # tekrar eden harfleri almadı, 
+# boşluk karakterini de aldı, unordered sıraladı
 
 set1 = {"blue", "green", "white", "magenta", "blue", "blue"} # dictioary'de de {} kullanıyorduk, python bu farkı anahtar : değer ile anlıyor
 print(set1) # {'green', 'white', 'blue', 'magenta'} # tekrar eden elemanları almadı, unordered sıraladı
@@ -152,7 +153,7 @@ print(a, b, c, d, sep = "\n")
 
 print(c.intersection(d) - d.union(c)) # set()
 # boş kümeyi göstermek için set() yazılır, {} değil. {} boş bir sözlük (dictionary) anlamına gelir.
-print(d.union(c) - (c.intersection(d))) # {'d', 's', 't', 'n'}
+print((d.union(c)) - (c.intersection(d))) # {'d', 's', 't', 'n'}
 
 print(a.difference(b).difference(c)) # {'m', 'l', 't'}
 print(a.difference(b).difference(d)) # {'m', 'l'}
@@ -235,7 +236,7 @@ while 10 > x :
 x = 5 
 while 10 > x :
     print("Bu döngü ne zaman biter?")
-    x = x +1 # x += 1
+    x = x + 1 # x += 1
 print("Döngü bitti.")
 
 x = 1
@@ -426,7 +427,7 @@ Sanal ortam (virtualenv) varsa: sanal ortama yüklenir.
 Yoksa: sistem genelindeki Python kurulumuna yüklenir.
 """
 
-# random modülünü install etmemize gerek yok, eğer gömülü bir modül ise/ veya daha önce install edilmişse  doğrudan import edebiiliriz.
+# random modülünü install etmemize gerek yok, eğer gömülü bir modül ise/veya daha önce install edilmişse  doğrudan import edebiiliriz.
 
 import random
 
@@ -437,13 +438,12 @@ sayi = random.randint(1, 200)
 count = 0
 while True :
     tahmin = int(input("1 - 200 arasında bir sayı giriniz :"))
+    count += 1
     if tahmin < sayi :
         print("Daha büyük bir sayı giriniz.")
-        count += 1
     elif tahmin > sayi :
         print("Daha küçük bir sayı giriniz.")
-        count += 1
     else :
         print("Tebrikler! Doğru tahmin ettiniz.")
-        print(f"Toplam {count + 1} denemede doğru tahmin ettiniz")
+        print(f"Toplam {count} denemede doğru tahmin ettiniz")
         break

@@ -490,15 +490,13 @@ print(myFamily) # {'child1': {'name': 'John', 'year': 2004}, 'child2': {'name': 
 """
 in ve not in Python'da operatördür, yani bir fonksiyon gibi değil, dil yapısı (syntax) olarak tanımlıdır — bu yüzden üstüne gelince imza (signature) çıkmaz.
 
-in Operatörü
-Kullanımı:
+in Operatörü Kullanımı:
 element in iterable
 Anlamı:
 Soldaki öğe (element), sağdaki yapının (iterable, yani üzerinde dolaşılabilen veri yapısı: liste, string, tuple, set, sözlük vs.) içinde var mı?
 Sonuç: True ya da False döner.
 
-not in Operatörü
-Kullanımı:
+not in Operatörü Kullanımı:
 element not in iterable
 Anlamı:
 Soldaki öğe, sağdaki yapının içinde yok mu?
