@@ -383,3 +383,67 @@ while x : # x 0 olduğunda döngü biter, 0 False olarak kabul edilir
     x -= 1
 print("Döngü bitti.")
 
+sayi = 25
+while True :
+    tahmin = int(input("1 - 100 arasında bir sayı giriniz :"))
+    if tahmin < sayi :
+        print("Daha büyük bir sayı giriniz.")
+    elif tahmin > sayi :
+        print("Daha küçük bir sayı giriniz.")
+    else :
+        print("Tebrikler! Doğru tahmin ettiniz.")
+        break # break döngüden çıkmamızı sağlar
+
+
+
+# random modülü
+# pip install "kütüphane adını yazarız"
+
+"""
+Python’daki random bir modüldür, yani bir kütüphanenin parçası olan dosyadır. Python’un standart modüllerinden biridir (yani ek kurulum gerekmez).
+Python’un standart kütüphanesinde (standard library) yer alır ve rastgele sayı üretme işlemleri için kullanılır.
+ Modül mü, Kütüphane mi?
+Modül: .py uzantılı bir Python dosyasıdır. random.py gibi.
+Kütüphane (Library): Birden fazla modülün bulunduğu büyük yapıdır (örneğin math, datetime, unittest gibi modüller Python Standard Library içindedir).
+Bu bağlamda random, standart kütüphanenin bir modülüdür.
+"""
+
+"""
+pip install Nedir?
+pip install, Python paketlerini (kütüphaneleri) yüklemek için kullanılan bir komuttur. Terminal (komut satırı) veya IDE'nin terminal penceresinde kullanılır.
+PIP = "Pip Installs Packages" (kendini referanslayan eğlenceli bir kısaltma)
+Eski kaynaklarda: "Preferred Installer Program" olarak da geçer.
+Ne işe yarar?
+Python diliyle yazılmış, başka geliştiriciler tarafından yayınlanmış paketleri Python Package Index (PyPI)'den indirip yükler.
+Nerede Kullanılır?
+Aşağıdaki gibi terminalde (CMD, Bash, PowerShell ya da VSCode/IDEA terminali) çalıştırılır:
+pip install requests
+Bu örnek, requests adındaki HTTP kütüphanesini indirip yükler.
+
+pip ile yüklenen paketler nereye gider?
+Varsayılan olarak:
+Sanal ortam (virtualenv) varsa: sanal ortama yüklenir.
+Yoksa: sistem genelindeki Python kurulumuna yüklenir.
+"""
+
+# random modülünü install etmemize gerek yok, eğer gömülü bir modül ise/ veya daha önce install edilmişse  doğrudan import edebiiliriz.
+
+import random
+
+print(random.random()) # 0.0 ile 1.0 arasında rastgele bir float sayısı döner
+print(random.randint(1, 200)) # 1 ile 200 arasında rastgele bir int sayısı döner
+
+sayi = random.randint(1, 200)
+count = 0
+while True :
+    tahmin = int(input("1 - 200 arasında bir sayı giriniz :"))
+    if tahmin < sayi :
+        print("Daha büyük bir sayı giriniz.")
+        count += 1
+    elif tahmin > sayi :
+        print("Daha küçük bir sayı giriniz.")
+        count += 1
+    else :
+        print("Tebrikler! Doğru tahmin ettiniz.")
+        print(f"Toplam {count + 1} denemede doğru tahmin ettiniz")
+        break
