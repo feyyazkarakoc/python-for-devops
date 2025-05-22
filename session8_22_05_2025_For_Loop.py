@@ -267,6 +267,102 @@ for i in liste_2 :
 print(cift, tek) # [2, 8, 32, 14, 18, 22] [1, 15, 9, 65, 41]
 
 
+# list comprehension
+# for döngüsünü tek satırda yazabiliriz
+# [ifade for öğe in koleksiyon if koşul]
+
+# klsaik yöntem
+for i in [1, 2, 3] :
+    if i % 2 == 0:
+        print(i ** 2)
+    else :
+        print(i)
+
+# list comprehension
+[i ** 2 for i in [1, 2, 3] if i % 2 == 0]
+
+[i if i % 2 == 1 else i ** 2 for i in [1, 2, 3]] # else ile beraber kullanılırsa if başa alınır
+
+liste = [1, 2, 3, 4, 5]
+yeni_liste = []
+for i in liste :
+    yeni_liste.append(i ** 2)
+print(yeni_liste)
+# list comprehension
+[i ** 2 for i in [1, 2, 3, 4, 5]]
+
+liste = [1, 2, 3, 4, 5]
+yeni_liste = []
+for i in liste :
+    if i % 2 == 0 :
+        yeni_liste.append(i ** 2)
+print(yeni_liste)
+# list comprehension
+[i ** 2 for  i in liste if i % 2 == 0 ]
+
+liste = [1, 2, 3, 4, 5]
+yeni_liste = []
+for i in liste :
+    if i % 2 == 0 :
+        yeni_liste.append(i)
+    else :
+        yeni_liste.append(i ** 2)
+print(yeni_liste)
+# list comprehension
+[i if i % 2 == 0 else i ** 2 for i in liste]
+
+
+# listedeki min ve max sayılar arasındaki kayıp sayıları bulunuz
+# klasik yöntem
+num = [48, 10, 11, 21, 36, 5, 6, 52, 28, 29,
+       53, 54, 45, 19, 20, 47, 55, 39, 41, 7,
+       9, 17, 26, 27, 42, 22, 37, 51, 46, 18,
+       44, 30, 34, 13, 15, 35, 33, 16, 50, 24]
+kayıp_sayilar = []
+for i in range(min(num), max(num)+1) :
+    if  i not in num :
+        kayıp_sayilar.append(i)
+print(kayıp_sayilar)
+# list comprehension
+num = [48, 10, 11, 21, 36, 5, 6, 52, 28, 29,
+       53, 54, 45, 19, 20, 47, 55, 39, 41, 7,
+       9, 17, 26, 27, 42, 22, 37, 51, 46, 18,
+       44, 30, 34, 13, 15, 35, 33, 16, 50, 24]
+[i for i in range(min(num), max(num) + 1) if i not in num ]
+# continue ile
+num = [48, 10, 11, 21, 36, 5, 6, 52, 28, 29,
+       53, 54, 45, 19, 20, 47, 55, 39, 41, 7,
+       9, 17, 26, 27, 42, 22, 37, 51, 46, 18,
+       44, 30, 34, 13, 15, 35, 33, 16, 50, 24]
+kayıp_sayilar = []
+for i in range(min(num), max(num) + 1) :
+    if i in num :
+        continue
+    kayıp_sayilar.append(i)
+print(kayıp_sayilar)
+
+
+# Kullanıcıdan aldığınız 3 sayının en büyüğünü yazdırınız
+sayi_1 = int(input("Birinci sayıyı giriniz : "))
+sayi_2 = int(input("İkinci sayıyı giriniz : "))
+sayi_3 = int(input("Üçüncü sayıyı giriniz : "))
+sayilar = [sayi_1, sayi_2, sayi_3]
+print(f"En büyük sayı : {max(sayilar)}")
+
+max = sayilar[0]
+for i in sayilar :
+    if  i > max :
+        max = i
+print(i)
+
+sayilar = []
+for i in range(3) :
+    sayi = int(input("Sayı giriniz : "))
+    sayilar.append(sayi)
+print(max(sayilar))
+
+
+
 
 
 
