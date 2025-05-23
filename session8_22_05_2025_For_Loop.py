@@ -21,7 +21,7 @@ for i in  [1, 2, 3, 4] : # i sağındaki iterable yapının her bir elemanını 
 """
  Python'da for döngüsü, bir collection (koleksiyon) (liste, demet, dize, set, sözlük vb.) elemanları üzerinde sırayla gezinmek için kullanılır
  for değişken in koleksiyon:
-    # Yapılacak işlemler
+     Yapılacak işlemler
 
 for harf in "merhaba":
     print(harf)
@@ -349,6 +349,10 @@ sayi_3 = int(input("Üçüncü sayıyı giriniz : "))
 sayilar = [sayi_1, sayi_2, sayi_3]
 print(f"En büyük sayı : {max(sayilar)}")
 
+sayi_1 = int(input("Birinci sayıyı giriniz : "))
+sayi_2 = int(input("İkinci sayıyı giriniz : "))
+sayi_3 = int(input("Üçüncü sayıyı giriniz : "))
+sayilar = [sayi_1, sayi_2, sayi_3]
 max = sayilar[0]
 for i in sayilar :
     if  i > max :

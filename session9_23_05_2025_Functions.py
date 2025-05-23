@@ -67,5 +67,8 @@ print(x) # 9
 print(type(print())) # <class 'NoneType'> 
 # Fonksiyonlarda çıktının kullanılabilir olması için print yerine return tercih edilir
 
+def topla(a, b) :
+    return a + b
 
+print()
 
