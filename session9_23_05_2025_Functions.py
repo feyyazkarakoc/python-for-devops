@@ -235,4 +235,93 @@ def tek_cift_sayilar(liste, secenek) :
     
 print(tek_cift_sayilar([1, 2, 3, 4, 5, 6], "tek")) # [1, 3, 5]
 print(tek_cift_sayilar([1, 2, 3, 7, 8, 10, 55, 22], "cift")) # [2, 8, 10, 22]
+
+# Bu fonksiyona default olarak bir değer verebiliriz
+def tek_cift_sayilar(liste, secenek = "tek") : # Kullanıcı seçenek girmediğinde  tek sayıları getirir
+    """Bu fonksiyon verilen listeden tek veya çift sayıları döndürür."""
+    if type(liste) != list :
+        return "Lütfen bir liste giriniz."
+    tek_sayialr = []
+    cift_sayilar = []
+    for j in liste :
+        if j %2 == 0 :
+            cift_sayilar.append(j)
+        else :
+            tek_sayialr.append(j)
+    if secenek == "tek" :
+        return tek_sayialr
+    elif secenek =="cift" :
+        return cift_sayilar
     
+    print(tek_cift_sayilar([1, 2, 3, 4, 5, 6])) # [1, 3, 5] default olarak tek sayıları döndürdü, tek çift diye belirtmedik
+
+# Kullanıcının girdiği listeden yine kullanıcının verdiği uzunlutaki isimleri döndüren bir fonksiyon yazalım
+def  kelime_secme(liste, uzunluk) :
+    sonuc = []
+    for isim in liste :
+        if len(isim) == uzunluk :
+            sonuc.append(isim)
+    return sonuc
+
+print(kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 5)) # ['Betül', 'Gülay', 'Feyza']
+
+def kelime_secme(liste, uzunluk) :
+    return [isim  for isim in liste if len(isim) == uzunluk]
+
+print(kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 4)) # ['Veli', 'Ayşe']
+
+print(kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 7)) # ['İbrahim', 'Uluğbek']
+     
+print(kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 5)) # ['Betül', 'Gülay', 'Feyza']
+
+x = kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 5)
+x.sort()
+print(x) # ['Betül', 'Feyza', 'Gülay'] # sort() metodu listeyi yerinde sıraladı
+
+"""
+list.sort() Metodu Nedir?
+Python'da sort() metodu, bir listeyi yerinde (in-place) sıralar. Yani orijinal listeyi değiştirir ve hiçbir şey döndürmez (None).
+In-place sorting: Listeyi doğrudan değiştirir, yeni bir liste oluşturmaz.
+Stable sort (kararlı sıralama): Aynı değerlere sahip öğeler, listede bulundukları sıraya göre yer değiştirmez.
+Bu, örneğin birden fazla kritere göre sıralama yaparken önemlidir.
+key parametresi: Öğeleri sıralamak için dönüş değeri kullanılacak özel bir fonksiyon belirtebilirsin.
+Not:
+sort() metodu sadece listeler için geçerlidir.
+Listeyi değiştirmek istemiyorsan, sorted() fonksiyonunu kullanabilirsin:
+
+"""
+
+# Sonucu sıralanmış olarak istersek
+def kelime_secme(liste, uzunluk) :
+    sonuc = []
+    for isim in liste :
+        if len(isim) == uzunluk :
+            sonuc.append(isim)
+    sonuc.sort()
+    return sonuc
+
+print(kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 5)) # ['Betül', 'Feyza', 'Gülay']
+
+# sıralanmış olarak listeyi getir sorted() versiyon 
+def kelime_seçme(liste, uzunluk):
+    sonuc = []
+    for isim in liste :
+        if len(isim) == uzunluk :
+            sonuc.append(isim)
+    return sorted(sonuc)  
+print(kelime_seçme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 5)) # ['Betül', 'Feyza', 'Gülay']
+"""
+Yerleşik (built-in) fonksiyondur. 
+sorted() fonksiyonu, Python'da sıralama yaparken orijinal veriyi bozmadan, yeni bir sıralı liste döndürmek için kullanılır.
+sorted() herhangi bir sıralanabilir veri tipi ile çalışır (liste, tuple, sözlük, set, vs.).
+Yeni bir liste döner, orijinal veri değişmez.
+key parametresiyle özel sıralama yapılabilir.
+reverse=True ile azalan sıralama yapılabilir.
+Not:
+list.sort() → listeyi yerinde değiştirir ve None döner.
+sorted() → değiştirmeden yeni sıralı liste döner.
+"""
+
+print(kelime_seçme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 4)) # ['Ayşe', 'Veli']
+
+print(kelime_seçme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "ibrahim", "Uluğbek"], 7)) # ['Uluğbek', 'ibrahim'] # ASCII değerlerine göre sıraladı
