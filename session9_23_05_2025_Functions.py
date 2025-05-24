@@ -12,6 +12,10 @@ def fonksiyon_adi(parametre1, parametre2, ...):
 """
 
 """
+ Python’da bir fonksiyon tanımlamak için def anahtar kelimesi her zaman zorunludur  (lambda dışında).
+"""
+
+"""
 Docstring'in Faydaları:
 help() komutuyla bu açıklamaya erişebilirsin.
 IDE'ler (VS Code, PyCharm, vb.) imleci fonksiyon üstüne getirince docstring’i gösterir.
@@ -67,8 +71,168 @@ print(x) # 9
 print(type(print())) # <class 'NoneType'> 
 # Fonksiyonlarda çıktının kullanılabilir olması için print yerine return tercih edilir
 
-def topla(a, b) :
+def topla(a, b) : # burda girilen parametrelere argüman deniliyor
     return a + b
 
-print()
 
+print(topla(70, 100)) # 170
+
+print(topla()) # TypeError: topla() missing 2 required positional arguments: 'a' and 'b' , argüaman girmediğimizde hata veriyor
+
+def topla(a = 2, b = 3) : # default değerler verebiliyoruz
+    return a + b
+
+print(topla()) # 5 
+
+print(topla(23, 32)) # 55 default değerleri olan fonksiyona yeni değerler de verebiliriz
+
+def kare_topla(a = 5, b = 3) :
+    return a ** 2 + b ** 2
+
+print(kare_topla()) # 34 defaullt değerlerin karesini aldı
+
+print(kare_topla(2, 3)) # 13
+
+def hesap_makinesi(x, opr, y) :
+    """Bu fonksiyon dört işlem yapabilmek için oluşturulmuştur."""
+    if opr == "+" :
+        return x + y
+    elif opr == "-" :
+        return x - y
+    elif opr == "*" :
+        return x * y
+    elif opr == "/" :
+        if y != 0 :
+            return x / y
+        else :
+            return "Sayı sıfıra bölünemez!!!"
+    else :
+        return "Geçersiz işlem!!!"
+    
+print(hesap_makinesi(4, "*", 12)) # 48
+
+print(hesap_makinesi("a", "+", "b")) # ab
+
+print(hesap_makinesi("a", "+", 5)) # TypeError: can only concatenate str (not "int") to str
+
+print(hesap_makinesi(4, 15, "+")) # Geçersiz işlem # fonksiyona verdiğimiz tuple tipindeki argümanlara pozisyonel argüman denir ve sıralama önemlidir
+"""
+Yani Fonksiyonun parametrelerine değer verirken sıralamaya (pozisyona) dikkat etmeliyiz. Sıralama yanlış olursa, fonksiyon beklenen şekilde çalışmaz.
+"""
+
+print(hesap_makinesi(5, "/", 0)) # Sayı sıfıra bölünemez!!!
+
+def hesap_makinesi() :
+    """Bu fonksiyon dört işlem yapabilmek için oluşturulmuştur."""
+    x = int(input("Birinci sayıyı giriniz: "))
+    y = int(input("İkinci sayıyı giriniz: ")) 
+    opr = input("Yapmak istediğiniz işlemi giriniz (+, -, *, /): ")
+    if opr == "+" :
+        return x + y
+    elif opr == "-" :
+        return x - y
+    elif opr == "*" :
+        return x * y
+    elif opr == "/" :
+        if y != 0 :
+            return x / y
+        else :
+            return "Sayı sıfıra bölünemez!!!"
+    else :
+        return "Geçersiz işlem!!!"
+
+print(hesap_makinesi()) # Bu fonksiyon kullanıcıdan veri alır ve işlemi yapar
+
+def my_len(iter) :
+    """Girilen ifadedeki eleman sayısını döndürür."""
+    sayac = 0
+    for i in iter :
+        sayac += 1
+    return sayac
+
+print(my_len("techpro")) # 6
+
+print(my_len([3, 2, 1, 3, 5, 6])) # 6
+
+print(my_len({"key1" : "value1", "key2": "value2"})) # 2
+
+print(my_len(1234)) # TypeError: 'int' object is not iterable, 1234 iterable olmadığı için hata verdi 
+
+print(len(1234)) # TypeError: object of type 'int' has no len()
+"""
+len() hangi türleri kabul etmez?
+Şu türlerde len() hata verir çünkü uzunluğu yoktur:
+int
+float
+bool
+None
+"""
+
+help(my_len)
+"""
+Help on function my_len in module __main__:
+
+my_len(iter)
+    Girilen ifadedeki eleman sayısını döndürür.
+"""
+
+# Fonksiyona eklediğimiz string ifadeyi döndüren bir metot var:
+my_len.__doc__  # 'Girilen ifadedeki eleman sayısını döndürür.' # docstring'i döndürür
+
+hesap_makinesi.__doc__  # 'Bu fonksiyon dört işlem yapabilmek için oluşturulmuştur.' # docstring'i döndürür
+
+"""
+Python'da __doc__ ve benzeri iki alt çizgiyle (__) başlayan ve biten yapılar özel metotlardır ve bunlara dondur
+(dunder = double underscore) metodları denir. Bunlar built-in (gömülü) ve özelleştirilebilir davranışları temsil eder.
+ Bunlar built-in mıdır?
+Evet, bunların tamamı Python'da gömülüdür (built-in) ama istersen sen de bu metotları override edebilir (yeniden tanımlayabilir)
+ve sınıflarına özel davranışlar kazandırabilirsin.
+"""
+
+# int bir sayının lenini bulan bir fonksiyon yazalım
+def len_int(sayi) :
+    """Bu fonksiyon integer ifadelerin uzunluğunu döndürür."""
+    str_sayi = str(sayi)
+    return len(str_sayi)
+
+print(len_int(1234)) # 4
+
+print(len_int("Hello World")) # 11
+
+print(len_int([1, 2, 4, 4, 6, 7])) # 18
+print(len([1, 2, 4, 4, 6, 7])) # 6 
+
+print(len_int(356.86432)) # 9
+
+print(len_int(-234)) # 4
+
+def len_int(sayi) :
+    """Bu fonksiyon integer ifadelerin uzunluğunu döndürür."""
+    if type(sayi) != int :
+        return "Lütfen bir integer ifade giriniz."
+    sayac = 0
+    for i in str(sayi) :
+        sayac += 1
+    return sayac
+print(len_int(123456789)) # 9
+
+# Kullanıcının verdiği liste içerisinden yine kullanıcının istediği tek veya çift sayılar listesini döndüren bir fonksiyon yazalım
+def tek_cift_sayilar(liste, secenek) :
+    """Bu fonksiyon verilen listeden tek veya çift sayıları döndürür."""
+    if type(liste) != list :
+        return "Lütfen bir liste giriniz."
+    tek_sayialr = []
+    cift_sayilar = []
+    for j in liste :
+        if j %2 == 0 :
+            cift_sayilar.append(j)
+        else :
+            tek_sayialr.append(j)
+    if secenek == "tek" :
+        return tek_sayialr
+    elif secenek =="cift" :
+        return cift_sayilar
+    
+print(tek_cift_sayilar([1, 2, 3, 4, 5, 6], "tek")) # [1, 3, 5]
+print(tek_cift_sayilar([1, 2, 3, 7, 8, 10, 55, 22], "cift")) # [2, 8, 10, 22]
+    
