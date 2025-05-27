@@ -29,7 +29,7 @@ Profesyonel projelerde neredeyse her fonksiyon, sınıf, modül böyle belgeleni
 """
 
 
-def kare_al(x) : # doc string şeklinde fonksiyonun tanımı yazılır
+def kare_al(x) : # docstring şeklinde fonksiyonun tanımı yazılır
     '''
     Girilen sayının karesini alan fonksiyon 
     '''
@@ -84,7 +84,7 @@ def topla(a = 2, b = 3) : # default değerler verebiliyoruz
 
 print(topla()) # 5 
 
-print(topla(23, 32)) # 55 default değerleri olan fonksiyona yeni değerler de verebiliriz
+print(topla(23, 32)) # 55 # default değerleri olan fonksiyona yeni değerler de verebiliriz
 
 def kare_topla(a = 5, b = 3) :
     return a ** 2 + b ** 2
@@ -184,7 +184,7 @@ hesap_makinesi.__doc__  # 'Bu fonksiyon dört işlem yapabilmek için oluşturul
 """
 Python'da __doc__ ve benzeri iki alt çizgiyle (__) başlayan ve biten yapılar özel metotlardır ve bunlara dondur
 (dunder = double underscore) metodları denir. Bunlar built-in (gömülü) ve özelleştirilebilir davranışları temsil eder.
- Bunlar built-in mıdır?
+Bunlar built-in mıdır?
 Evet, bunların tamamı Python'da gömülüdür (built-in) ama istersen sen de bu metotları override edebilir (yeniden tanımlayabilir)
 ve sınıflarına özel davranışlar kazandırabilirsin.
 """
@@ -192,8 +192,7 @@ ve sınıflarına özel davranışlar kazandırabilirsin.
 # int bir sayının lenini bulan bir fonksiyon yazalım
 def len_int(sayi) :
     """Bu fonksiyon integer ifadelerin uzunluğunu döndürür."""
-    str_sayi = str(sayi)
-    return len(str_sayi)
+    return len(str(sayi))
 
 print(len_int(1234)) # 4
 
@@ -255,7 +254,7 @@ def tek_cift_sayilar(liste, secenek = "tek") : # Kullanıcı seçenek girmediği
     
     print(tek_cift_sayilar([1, 2, 3, 4, 5, 6])) # [1, 3, 5] default olarak tek sayıları döndürdü, tek çift diye belirtmedik
 
-# Kullanıcının girdiği listeden yine kullanıcının verdiği uzunlutaki isimleri döndüren bir fonksiyon yazalım
+# Kullanıcının girdiği listeden yine kullanıcının verdiği uzunluktaki isimleri döndüren bir fonksiyon yazalım
 def  kelime_secme(liste, uzunluk) :
     sonuc = []
     for isim in liste :
@@ -266,7 +265,7 @@ def  kelime_secme(liste, uzunluk) :
 print(kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 5)) # ['Betül', 'Gülay', 'Feyza']
 
 def kelime_secme(liste, uzunluk) :
-    return [isim  for isim in liste if len(isim) == uzunluk]
+    return [isim for isim in liste if len(isim) == uzunluk]
 
 print(kelime_secme(["Ali", "Veli", "Ayşe", "Betül", "Gülay", "Feyza", "İbrahim", "Uluğbek"], 4)) # ['Veli', 'Ayşe']
 
@@ -288,7 +287,6 @@ key parametresi: Öğeleri sıralamak için dönüş değeri kullanılacak özel
 Not:
 sort() metodu sadece listeler için geçerlidir.
 Listeyi değiştirmek istemiyorsan, sorted() fonksiyonunu kullanabilirsin:
-
 """
 
 # Sonucu sıralanmış olarak istersek
