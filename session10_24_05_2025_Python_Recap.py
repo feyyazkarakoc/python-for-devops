@@ -48,7 +48,8 @@ print(True if (sayi1 == sayi2) or ((sayi1 - sayi2) % 5 == 0) else False)
 print(True if sayi1 == sayi2 or abs(sayi1 - sayi2) % 5 == 0 else False)
 
 
-""" 4 - Vücut kitle indexini hesaplayan fonksiyonu yazınız. Hesapladığınız değerin hangi kategoride olduğunu belirtiniz. 
+# 4 - Vücut kitle indexini hesaplayan fonksiyonu yazınız. Hesapladığınız değerin hangi kategoride olduğunu belirtiniz. 
+"""
 (vki = kilo / (boy ** 2))
 VKI Aralıkları:
 18.5'in altı: Zayıf
@@ -78,6 +79,32 @@ boy =  float(input("Boyunuzu giriniz (m): "))
 vki, aralık = vki_hesapla(kilo, boy)
 print(f"Vücut kitle indeksiniz: {vki: .2f} - Kategori : {aralık}")
 
+"""
+Python'da aralik değişkeni yalnızca if, elif blokları içinde tanımlanıyor gibi görünüyor. Ama yine de return vki,
+aralik satırında bu değişkene ulaşılıyor. Peki bu nasıl oluyor?
+Python'da if-elif-else Bloklarının Scope'u (Kapsamı):
+Python'da:
+if, elif, else, for, while gibi blokların kendilerine özel bir scope'u yoktur.
+Yani, bu bloklarda tanımlanan değişkenler, bulundukları fonksiyonun içinde geçerli olur.
+Burada aralik değişkeni tüm if-elif bloklarında tanımlanıyor ama fonksiyonun genel kapsamına ait. 
+Yani fonksiyon çalıştırıldığında ve bir koşul sağlandığında aralik atanıyor ve sonrasında return ile birlikte döndürülebiliyor.
+Potansiyel Risk:
+Eğer hiçbir if veya elif bloğu çalışmazsa, aralik hiç tanımlanmamış olur ve return kısmında:
+UnboundLocalError: local variable 'aralik' referenced before assignment
+hatası alırsın.
+
+Ama senin koşulların tüm olası vki değerlerini kapsadığı için bu sorun çıkmaz. Yine de güvenli olması için else eklemek iyi bir pratiktir:
+    else:
+        aralik = "Bilinmeyen"
+
+Kısaca Özet:
+Python'da if, elif, else gibi bloklar yeni bir scope oluşturmaz.
+Bloklarda tanımlanan değişkenler, fonksiyon kapsamı içinde tanımlanmış sayılır.
+Ama hiçbir blok çalışmazsa ve değişken tanımlanmazsa, UnboundLocalError hatası alırsın.
+Güvenli kod için mutlaka bir else veya başlangıçta aralik = None gibi varsayılan değer belirlemek iyi bir uygulamadır.
+"""
+
+
 # 5 - Kullanıcıdan bir cümle isteyin. Cümledeki büyük harf ve küçük harf sayısını hesaplayan bir program yazın.
 
 def buyuk_kucuk_harf_say(cumle) :
@@ -95,8 +122,8 @@ print(buyuk_kucuk_harf_say(cumle))
 cumle = input("Bir cümle giriniz: ")
 kucuk_harf, buyuk_harf = 0, 0
 for i in cumle :
-    kucuk_harf += i.islower()
-    buyuk_harf += i.isupper()
+    kucuk_harf += i.islower() # bu ifade True ise 1, False ise 0 döndürür
+    buyuk_harf += i.isupper() # bu ifade True ise 1, False ise 0 döndürür
 print(cumle)
 print(f"Küçük har sayısı : {kucuk_harf}\nbüyük harf sayısı : {buyuk_harf}")
 # f stringten önce format kullanılıyordu, şu an yaygın değil
@@ -286,7 +313,7 @@ for index, meyve in enumerate(meyveler, start = 1) :
 3. muz
 """
 
-print(list(enumerate(["elma", "armut", "muz"]))) # [(0, 'elma'), (1, 'armut'), (2, 'muz')]
+print(list(enumerate(["elma", "armut", "muz"]))) # [(0, 'elma'), (1, 'armut'), (2, 'muz')]  # enumerate, bir enumerate objesi döndürür, yazdırmak için list() kullanabiliriz
 
 
 names = ["Zehra", "Seda", "Zeynep", "Nur", "Züleyha"]
