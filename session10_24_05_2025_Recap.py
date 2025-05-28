@@ -176,3 +176,166 @@ def palindrome(ifade) :
 print(palindrome("ey edip adanada pide ye"))
 
 # 8 - Virgülle ayrılmış sayılardan oluşan bir string dizesi giriniz. Bu dizedeki tek sayıların karesini virgülle ayırarak yazdırınız.
+def tek_sayilarin_karesi(dize) :
+    tek_kareler = []
+    dize = dize.replace(",","")
+    for i in dize :
+        if int(i) % 2 == 1 :
+           tek_kareler.append(int(i) ** 2)
+    return tek_kareler
+
+dize = input("Virgülle ayrılmış sayılardan oluşan bir dize giriniz: ")
+print(tek_sayilarin_karesi(dize))
+
+def tek_sayilarin_karesi(dize) :
+    tek_kareler = []
+    for i in dize.split(",") :
+        if int(i) % 2 == 1 :
+            tek_kareler.append(int(i) ** 2)
+    return tek_kareler
+
+dize = input("Virgülle ayrılmış sayılardan oluşan bir dize giriniz: ")
+print(f"Girilen dizedeki tek sayıların karesinin listesi : {tek_sayilarin_karesi(dize)}")
+
+# 9 - Girilen cümledeki çift indekslerdeki harfleri büyük diğerlerini küçük harf yapan fonksiyonu yazınız.
+
+def buyuk_kucuk_indeks(cumle) :
+    yeni_cumle = ""
+    for i in  range(len(cumle)) :
+        if i % 2 == 0  and cumle[i].isalpha() :
+            yeni_cumle += cumle[i].upper()
+        elif i % 2 == 1 and cumle[i].isalpha() :
+            yeni_cumle += cumle[i].lower()
+        else :
+            yeni_cumle += cumle[i]
+    return yeni_cumle
+
+cumle = input("Bir cümle giriniz: ")
+print(buyuk_kucuk_indeks(cumle))
+
+# 10 - girilen öğrenci listesindeki tek indexteki isimleri ayrı listeye çift indexte olan isimleri ayrı listeye alan fonksiyonu yazınız. 
+# Fakat bu iki liste tek bir liste olarak return olsun.
+
+def ayristir(ogrenci_listesi) :
+    tek_liste = []
+    cift_liste = []
+    for i in range(len(ogrenci_listesi)) :
+        if i % 2 == 0 :
+            cift_liste.append(ogrenci_listesi[i])
+        else :
+            tek_liste.append(ogrenci_listesi[i])
+    return [cift_liste, tek_liste]
+
+ogrenci_listesi = input("Öğrenci isimlerini virgülle ayırarak giriniz: ").split(",")
+print(ayristir(ogrenci_listesi))
+
+def divide_names(students) :
+    grup = [[], []]
+    for index, student in enumerate(students) :
+        if index % 2 == 0 :
+            grup[0].append(student)
+        else :
+            grup[1].append(student)
+    return grup
+
+ogrenci_listesi = "Zehra, Seda, Zeynep, Nur,Züleyha".split(",")
+print(divide_names(ogrenci_listesi))
+
+
+"""
+Python'daki enumerate() fonksiyonu oldukça kullanışlı bir yerleşik (built-in) fonksiyondur. enumerate(), bir iterable (örneğin list, tuple, string) 
+üzerindeki elemanlara indeks bilgisiyle birlikte döngü kurmamızı sağlar.
+Söz Dizimi (Syntax):
+enumerate(iterable, start=0)
+iterable	Üzerinde döneceğimiz herhangi bir sıralı yapı (liste, demet, string vs.)
+start	İndeksin kaçtan başlayacağı (varsayılan 0)
+Döndürdüğü Değer:
+Bir enumerate objesi döner. Bu nesne, her elemanı (indeks, değer) şeklinde bir tuple olan bir iterable'dır.
+"""
+
+# klasik
+meyveler = ["elma", "armut", "muz"]
+for i in range(len(meyveler)) :
+    print(i, meyveler[i])
+
+"""
+0 elma 
+1 armut
+2 muz 
+"""
+
+# enumerate() 
+meyveler = ["elma", "armut", "muz"]
+for index, meyve in enumerate(meyveler) :
+    print(index, meyve)
+
+"""
+0 elma
+1 armut
+2 muz
+"""
+
+# start parametresi ile:
+meyveler = ["elma", "armut", "muz"]
+for index, meyve in enumerate(meyveler, start = 1) :
+    print(f"{index}. {meyve}")
+
+"""
+1. elma
+2. armut
+3. muz
+"""
+
+print(list(enumerate(["elma", "armut", "muz"]))) # [(0, 'elma'), (1, 'armut'), (2, 'muz')]
+
+
+names = ["Zehra", "Seda", "Zeynep", "Nur", "Züleyha"]
+print(enumerate(names)) # <enumerate object at 0x0000016198F611C0>   # enumerate, bir enumerate objesi döndürür, yazdırmak için for döngüsü kullanabiliriz
+
+for i in enumerate(names) : # iterablle verileri numaralandırır ve object olarak döndürür
+    print(i)
+
+"""
+(0, 'Zehra')
+(1, 'Seda')
+(2, 'Zeynep')
+(3, 'Nur')
+(4, 'Züleyha')
+"""
+
+
+# 11 - 10'a kadar olan çift sayıların karesini alarak bir sözlüğe ekleyin. Keyler orjinal değerler value'lar karesi alınmış değerler olsun.
+
+dict_sayilar = {}
+for i in range(10) :
+    if i % 2 == 0 :
+        dict_sayilar[i] = i ** 2
+print(dict_sayilar) # {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+
+dict_sayilar = {i : i ** 2 for i in range(10) if i % 2 == 0}
+print(dict_sayilar) # {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+
+dict_sayilar = {}
+for i in range(10) :
+    if i % 2 == 0 :
+        dict_sayilar.update({i : i ** 2})
+print(dict_sayilar) # {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+
+# 12 - Girilen sayının verilen aralıkta olup olmadığını kontrol eden bir fonksiyon yazınız.
+
+def sayi_varmı(sayi, baslangic, bitis) :
+    return baslangic < sayi < bitis
+
+sayi = int(input("Bir sayı giriniz: "))
+baslangic = int(input("Başlangıç değerini giriniz: "))
+bitis = int(input("Bitiş değerini giriniz: "))
+print(f"Girdiğiniz {sayi} sayısı {baslangic} ile {bitis} arasında mı? : {sayi_varmı(sayi, baslangic, bitis)}")
+
+def sayi_varmi(sayi, baslangic, bitis) :
+    if sayi in list(range(baslangic, bitis)) :
+        print(f"Aradığınız {sayi} sayısı verdiğiniz {baslangic} ile {bitis} aralığındadır.")
+    else :
+        print(f"Aradığınız {sayi} sayısı verdiğiniz {baslangic} ile {bitis} aralığında değildir.")
+
+print(sayi_varmi(5, 0, 100))
+

@@ -70,7 +70,7 @@ print(0 is not False) # True # is not operatörü nesne kimliğini (yani bellekt
 
 # String methods
 
- # input() fonksiyonu, kullanıcıdan bir girdi alır ve çıktısı str olur.
+# input() fonksiyonu, kullanıcıdan bir girdi alır ve çıktısı str olur.
 
 input("Adınızı giriniz :")
 
@@ -206,7 +206,7 @@ değişken[start : stop : step]
 step için varsayılan değer 1’dir.
 """
 
-print(name[-2::-5]) # ourT -2'den başlar, 5'er 5'er atlayarak indeksleri getirir
+print(name[-2::-5]) # ourT #-2'den başlar, 5'er 5'er atlayarak indeksleri getirir
 
 # name = Techpro Education
 print(name[3:-4:2]) # hr dc 3'ten başlar, -4'e kadar 2'şer atlayarak indeksleri getirir. 3, 5, 7, 9, 11 bitiş indeksi dahil edilmez -4 (13) dahil değil ÖNEMLİ ******
