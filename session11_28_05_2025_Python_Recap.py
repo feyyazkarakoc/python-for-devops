@@ -71,8 +71,8 @@ print(demo_list) # [3, 3, 4, 4, 2, 1, 6, 6, 9, 9, 9]
 
 tup1 = (1, 2, "a")
 tup2 = (3, 4, "b")
-tup3 = tup1 + tup2 # + operatörü ile iki tuple birleştirilebilir
-print(tup1)  # (1, 2, 'a')
+tup3 = tup1 + tup2 # + operatörü ile iki tuple birleştirilebilir (concat)
+print(tup1)  # (1, 2, 'a') 
 print(tup2) # (3, 4, 'b')
 print(tup3) # (1, 2, 'a', 3, 4, 'b')  yeni tuple oluşturuldu
 
